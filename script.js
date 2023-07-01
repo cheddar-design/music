@@ -8,6 +8,7 @@ const scaleBtn = document.querySelector('.submitScale');
 const scaleText = document.querySelector('.scale');
 const chordBtn = document.querySelector('.submitChord');
 const chordText = document.querySelector('.chord');
+const piano = document.querySelector('.piano');
 
 const noteKeys = [{
   name: 'C',
@@ -138,30 +139,59 @@ revealBtn.addEventListener('click', () => {
 
 scaleBtn.addEventListener('click', () => {
   let answer = document.getElementById('scale').value;
-  answer = answer.split(',').map(x => x.trim().toUpperCase());
+  if (answer) {
+    answer = answer.split(',').map(x => x.trim().toUpperCase());
   answer = answer.map(x => notes.indexOf(x));
   if (JSON.stringify(answer) == JSON.stringify(currentScale)) {
     currentScale = scale(Math.floor(Math.random() * (11)));
     scaleText.innerText = notes[currentScale[0]];
     document.getElementById('scale').value = '';
   }
+  } else {
+    let keys = document.querySelectorAll('.clicked');
+    let keysList = [];
+    for (let key of keys) {
+      keysList.push(notes.indexOf(key.innerText))
+    }
+    if (JSON.stringify(keysList.slice(0,7)) == JSON.stringify(currentScale)) {
+      currentScale = scale(Math.floor(Math.random() * (11)));
+      scaleText.innerText = notes[currentScale[0]];
+      keys.forEach(x => {x.classList.remove('clicked')})
+    }
+  }
 })
 
 chordBtn.addEventListener('click', () => {
   let answer = document.getElementById('chord').value;
-  answer = answer.split(',').map(x => x.trim().toUpperCase());
-  answer = answer.map(x => notes.indexOf(x));
   let indexes = currentChord.notes.map(x => x.index)
   indexes = indexes.map(x => currentChordScale[x]);
   for (let i = 0; i < indexes.length; i++) {
     indexes[i] = indexes[i] + currentChord.notes[i].shift;
   }
-  console.log(answer)
-  console.log(indexes)
+  if (answer) {
+    answer = answer.split(',').map(x => x.trim().toUpperCase());
+  answer = answer.map(x => notes.indexOf(x));
   if (JSON.stringify(answer) == JSON.stringify(indexes)) {
     currentChordScale = scale(Math.floor(Math.random() * 11));
     currentChord = chords[Math.floor(Math.random() * (chords.length - 1))];
     chordText.innerText = `${notes[currentChordScale[0]]} ${currentChord.name}`;
     document.getElementById('chord').value = '';
   }
+  } else {
+    let keys = document.querySelectorAll('.clicked');
+    let keysList = [];
+    for (let key of keys) {
+      keysList.push(notes.indexOf(key.innerText))
+    }
+    if (JSON.stringify(keysList.slice(0,7)) == JSON.stringify(indexes)) {
+      currentChordScale = scale(Math.floor(Math.random() * 11));
+      currentChord = chords[Math.floor(Math.random() * (chords.length - 1))];
+      chordText.innerText = `${notes[currentChordScale[0]]} ${currentChord.name}`;
+      keys.forEach(x => {x.classList.remove('clicked')})
+    }
+  }
+})
+
+piano.addEventListener('click', (e) => {
+  e.target.classList.toggle('clicked');
 })
