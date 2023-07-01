@@ -1,5 +1,3 @@
-const synth = new Tone.Synth().toDestination();
-
 const newBtn = document.querySelector('.new');
 const playBtn = document.querySelector('.play');
 const revealBtn = document.querySelector('.reveal');
@@ -121,9 +119,9 @@ function randomNote() {
 
 key.innerText = noteList.shift();
 
-playBtn.addEventListener("click", () => {
-  synth.triggerAttackRelease(key.innerText + '4', '8n');
-});
+// playBtn.addEventListener("click", () => {
+//   synth.triggerAttackRelease(key.innerText + '4', '8n');
+// });
 
 newBtn.addEventListener('click', () => {
   key.classList = 'text key hide';
