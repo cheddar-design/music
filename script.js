@@ -1,7 +1,7 @@
-const newBtn = document.querySelector('.new');
-const playBtn = document.querySelector('.play');
-const revealBtn = document.querySelector('.reveal');
-const key = document.querySelector('.key');
+// const newBtn = document.querySelector('.new');
+// const playBtn = document.querySelector('.play');
+// const revealBtn = document.querySelector('.reveal');
+// const key = document.querySelector('.key');
 const scaleBtn = document.querySelector('.submitScale');
 const scaleText = document.querySelector('.scale');
 const chordBtn = document.querySelector('.submitChord');
@@ -117,23 +117,23 @@ function randomNote() {
   return Math.floor(Math.random() * (notes.length - 1));
 }
 
-key.innerText = noteList.shift();
+// key.innerText = noteList.shift();
 
 // playBtn.addEventListener("click", () => {
 //   synth.triggerAttackRelease(key.innerText + '4', '8n');
 // });
 
-newBtn.addEventListener('click', () => {
-  key.classList = 'text key hide';
-  if (noteList.length == 0) {
-    fillNotes()
-  }
-  key.innerText = noteList.shift();
-})
+// newBtn.addEventListener('click', () => {
+//   key.classList = 'text key hide';
+//   if (noteList.length == 0) {
+//     fillNotes()
+//   }
+//   key.innerText = noteList.shift();
+// })
 
-revealBtn.addEventListener('click', () => {
-  key.classList.toggle('hide');
-})
+// revealBtn.addEventListener('click', () => {
+//   key.classList.toggle('hide');
+// })
 
 scaleBtn.addEventListener('click', () => {
   let answer = document.getElementById('scale').value;
