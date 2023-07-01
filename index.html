@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Note Game</title>
+</head>
+<body>
+  <div class="container">
+    <span class="text key hide">-</span>
+    <button class="reveal">Reveal</button>
+    <button class="play">Play</button>
+    <button class="new">New</button>
+  </div>
+  <div class="container">
+    <span class="text scale">-</span>
+    <input type="text" class="input" id="scale">
+    <button class="submitScale">Check</button>
+  </div>
+  <div class="container">
+    <span class="text chord">-</span>
+    <input type="text" class="input" id="chord">
+    <button class="submitChord">Check</button>
+  </div>
+<script src="http://unpkg.com/tone"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    display: grid;
+    place-items: center;
+    font-family: sans-serif;
+}
+.container {
+    padding: 60px 0px;
+}
+.text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    font-size: 4rem;
+    opacity: 1;
+}
+.hide {
+    opacity: 0;
+}
